@@ -1,5 +1,6 @@
 // src/components/Services.tsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 // Interface for individual service item data
@@ -82,12 +83,12 @@ const Services: React.FC = () => {
 
         {/* Optional: Add a CTA linking to a more detailed services page or the quote form */}
         <div className="text-center mt-12 lg:mt-16">
-          <a
-            href="#quote-form" // Link to quote form section
+          <Link
+            to="/quote" // Link to quote form section
             className="inline-block bg-irides-green hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded text-lg transition duration-150 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-irides-green"
           >
             {t('discussProject')}
-          </a>
+          </Link>
         </div>
       </div>
     </section>

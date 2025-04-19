@@ -1,5 +1,6 @@
 // src/components/Hero.tsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const Hero: React.FC = () => {
@@ -14,12 +15,12 @@ const Hero: React.FC = () => {
         {t('heroDescription')}
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-          <a
-            href="#quote-form" // Placeholder link
+          <Link
+            to="/quote" // Placeholder link
             className="inline-block bg-irides-700 hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded text-lg transition duration-150 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-irides-500 active:bg-irides-800"
           >
             {t('requestQuote')}
-          </a>
+          </Link>
           <a
             href="#services" // Link to services section
             className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded text-lg transition duration-150 ease-in-out border border-gray-300 shadow-sm hover:shadow"

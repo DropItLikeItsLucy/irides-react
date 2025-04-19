@@ -1,5 +1,6 @@
 // src/components/CTA.tsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const CTA: React.FC = () => {
@@ -13,12 +14,12 @@ const CTA: React.FC = () => {
         <p className="text-lg md:text-xl text-green-50 mb-8 max-w-3xl mx-auto">
         {t('ctaDescription')}
         </p>
-        <a
-          href="#quote-form" // Should link to the actual quote form/section later
+        <Link
+          to="/quote" // Should link to the actual quote form/section later
           className="bg-irides-green hover:bg-opacity-80 text-white font-bold py-2 px-5 rounded transition duration-150 ease-in-out shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-irides-green" // Added hover scale effect
         >
           {t('getFreeQuoteNow')}
-        </a>
+        </Link>
         {/* Optional: Add a secondary, lower-commitment CTA */}
         {/* <p className="mt-6 text-sm text-gray-100">
              Have questions? <a href="mailto:sales@irides.example.com" className="underline hover:text-white">Contact our support team</a>.
