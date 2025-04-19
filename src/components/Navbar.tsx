@@ -1,7 +1,10 @@
 // src/components/Navbar.tsx
 import React from 'react';
+import LanguageSwitcher from './LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
 
 const Navbar: React.FC = () => {
+  const { t } = useTranslation();
   // Later, maybe add state for mobile menu toggle
   // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -12,7 +15,7 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <a href="/" className="text-2xl font-bold text-irides-700 hover:text-irides-950 transition duration-150 ease-in-out">
-              IRIDES
+            {t('iridesBrand')}
             </a>
           </div>
 
@@ -21,11 +24,12 @@ const Navbar: React.FC = () => {
             {/* Optional: Add links here later if needed e.g., to #services */}
             {/* <a href="#services" className="text-gray-600 hover:text-gray-900">Services</a> */}
             {/* <a href="#contact" className="text-gray-600 hover:text-gray-900">Contact</a> */}
+            <LanguageSwitcher /> 
             <a // Changed button to link for quote page/modal later
               href="#quote-form" // Placeholder link, update later
               className="bg-irides-green hover:bg-opacity-80 text-white font-bold py-2 px-5 rounded transition duration-150 ease-in-out shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-irides-green"
             >
-              Get a Quote
+              {t('getQuote')} 
             </a>
           </div>
 
@@ -35,7 +39,7 @@ const Navbar: React.FC = () => {
               href="#quote-form" // Placeholder link, update later
               className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm transition duration-150 ease-in-out shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
-              Get Quote
+              {t('getQuote')} 
             </a>
             {/* <button
               // onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} // Add state later

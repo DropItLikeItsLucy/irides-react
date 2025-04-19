@@ -1,3 +1,4 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -25,7 +26,16 @@ export default {
           900: '#14532d',   // Example darker shade
           950: '#003513'    // The specific Text color you picked
         },
-      }
+      },
+      fontFamily: {
+        // Add 'Noto Sans Georgian' to the beginning of the sans-serif stack
+        sans: [
+          '"Noto Sans Georgian"', // Font name with spaces needs quotes
+          ...defaultTheme.fontFamily.sans // Include Tailwind's default sans-serif fonts as fallbacks
+        ],
+        // You could also create a specific key if you only wanted it applied sometimes
+        // georgian: ['"Noto Sans Georgian"', ...defaultTheme.fontFamily.sans],
+      },
     },
   },
   plugins: [],

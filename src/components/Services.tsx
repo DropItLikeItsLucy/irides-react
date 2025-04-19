@@ -1,5 +1,6 @@
 // src/components/Services.tsx
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 // Interface for individual service item data
 interface ServiceItemData {
@@ -9,21 +10,12 @@ interface ServiceItemData {
   icon?: React.ReactNode; // Optional icon component
 }
 
-// Data array for services - makes it easy to add/remove services
-const servicesData: ServiceItemData[] = [
-  { title: 'Business Cards', imageUrl: '/images/services/business-cards.png', altText: 'Business Cards Icon' }, // Example path
-  { title: 'Leaflets & Flyers', imageUrl: '/images/services/flyers.png', altText: 'Leaflets & Flyers Icon' },
-  { title: 'Books & Booklets', imageUrl: '/images/services/books.png', altText: 'Books & Booklets Icon' },
-  { title: 'Magazines', imageUrl: '/images/services/magazines.png', altText: 'Magazines Icon' },
-  { title: 'Posters', imageUrl: '/images/services/posters.png', altText: 'Posters Icon' },
-  { title: 'Brochures', imageUrl: '/images/services/brochures.png', altText: 'Brochures Icon' },
-  { title: 'Custom Packaging', imageUrl: '/images/services/packaging.png', altText: 'Custom Packaging Icon' },
-  { title: 'And Much More...', imageUrl: '/images/services/more.png', altText: 'More printing services Icon' },
-];
+
 
 
 // Sub-component for a single Service Card
 const ServiceCard: React.FC<ServiceItemData> = ({ title, imageUrl, altText, icon }) => {
+  
   return (
     <div className="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow duration-200 ease-in-out border border-gray-100 flex flex-col items-center justify-center aspect-square">
       {/* Prioritize image if available, otherwise icon */}
@@ -51,15 +43,27 @@ const ServiceCard: React.FC<ServiceItemData> = ({ title, imageUrl, altText, icon
 
 // Main Services Section Component
 const Services: React.FC = () => {
+  const { t } = useTranslation();
+  // Data array for services - makes it easy to add/remove services
+  const servicesData: ServiceItemData[] = [
+    { title: t('serviceBusinessCards'), imageUrl: '/images/services/business-cards.png', altText: t('serviceBusinessCardsAlt') },
+    { title: t('serviceLeaflets'), imageUrl: '/images/services/flyers.png', altText: t('serviceLeafletsAlt') },
+    { title: t('serviceBooks'), imageUrl: '/images/services/books.png', altText: t('serviceBooksAlt') },
+    { title: t('serviceMagazines'), imageUrl: '/images/services/magazines.png', altText: t('serviceMagazinesAlt') },
+    { title: t('servicePosters'), imageUrl: '/images/services/posters.png', altText: t('servicePostersAlt') },
+    { title: t('serviceBrochures'), imageUrl: '/images/services/brochures.png', altText: t('serviceBrochuresAlt') },
+    { title: t('servicePackaging'), imageUrl: '/images/services/packaging.png', altText: t('servicePackagingAlt') },
+    { title: t('serviceMore'), imageUrl: '/images/services/more.png', altText: t('serviceMoreAlt') },
+  ];
   return (
     <section id="services" className="py-16 lg:py-24 bg-gradient-to-b from-gray-50 to-white"> {/* Subtle gradient background */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Our Wide Range of Printing Services
+          {t('servicesHeadline')}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We handle projects big and small, ensuring consistent quality across all your printed materials.
+          {t('servicesDescription')}
           </p>
         </div>
 
@@ -82,7 +86,7 @@ const Services: React.FC = () => {
             href="#quote-form" // Link to quote form section
             className="inline-block bg-irides-green hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded text-lg transition duration-150 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-irides-green"
           >
-            Discuss Your Project
+            {t('discussProject')}
           </a>
         </div>
       </div>

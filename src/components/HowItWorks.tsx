@@ -1,5 +1,6 @@
 // src/components/HowItWorks.tsx
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 // Interface for step data
 interface StepData {
@@ -9,37 +10,39 @@ interface StepData {
   icon?: React.ReactNode; // Optional: Add specific icons per step later
 }
 
-// Data for the steps
+
+
+// Main HowItWorks Component
+const HowItWorks: React.FC = () => {
+  const { t } = useTranslation();
+  // Data for the steps
 const steps: StepData[] = [
   {
     stepNumber: 1,
-    title: 'Submit Your Request',
-    description: 'Contact us with your project specs for a custom quote, or easily configure options for standard items like business cards.',
+    title: t('step1Title'),
+    description: t('step1Desc'),
     // icon: <SomeIconComponent /> // Example
   },
   {
     stepNumber: 2,
-    title: 'Upload & Approve',
-    description: 'Use our simple upload tool for your design files. We’ll provide a digital proof for your review and approval before printing.',
+    title: t('step2Title'),
+    description: t('step2Desc'),
   },
   {
     stepNumber: 3,
-    title: 'Fast Production & Delivery',
-    description: 'Once approved, your order moves swiftly through production. We print, finish, and ship your high-quality materials right to your door.',
+    title: t('step3Title'),
+    description: t('step3Desc'),
   },
 ];
-
-// Main HowItWorks Component
-const HowItWorks: React.FC = () => {
   return (
     <section id="how-it-works" className="py-16 lg:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Simple Steps to Perfect Prints
+          {t('howitworksHeadline')}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Getting your professional printing done is easy with IRIDES.
+          {t('howitworksDescription')}
           </p>
         </div>
 

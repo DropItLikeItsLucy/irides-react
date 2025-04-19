@@ -1,5 +1,6 @@
 // src/components/Testimonials.tsx
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 // Interface for testimonial data
 interface TestimonialData {
@@ -8,19 +9,20 @@ interface TestimonialData {
   title: string; // e.g., "CEO, ExampleCorp" or "Small Business Owner"
   // imageUrl?: string; // Optional: Add image URL for avatar later
 }
-
+const Testimonials: React.FC = () => {
+  const { t } = useTranslation();
 // Sample testimonial data
 const testimonials: TestimonialData[] = [
   {
-    quote: "IRIDES delivered our marketing materials ahead of schedule and the quality was outstanding for our recent trade show. Their pricing is very competitive too!",
-    name: 'Jane D.',
-    title: 'Marketing Manager, Tech Startup',
+    quote: t('testimonial1Quote'),
+    name: t('testimonial1Name'),
+    title: t('testimonial1Title'),
     // imageUrl: "/images/testimonials/jane-d.jpg"
   },
   {
-    quote: "We needed complex book printing with specific binding for a corporate event. IRIDES handled everything professionally and the final product exceeded our expectations. Highly recommended.",
-    name: 'John S.',
-    title: 'Events Coordinator, Finance Group',
+    quote: t('testimonial2Quote'),
+    name: t('testimonial2Name'),
+    title: t('testimonial2Title'),
     // imageUrl: "/images/testimonials/john-s.jpg"
   },
   // Add a third one if you have it - 2 or 3 is usually good
@@ -32,16 +34,16 @@ const testimonials: TestimonialData[] = [
 ];
 
 // Main Testimonials Component
-const Testimonials: React.FC = () => {
+
   return (
     <section id="testimonials" className="py-16 lg:py-24 bg-gradient-to-b from-green-50 via-green-100 to-green-50"> {/* Light blue background */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Trusted by Businesses Like Yours
+          {t('testimonialsHeadline')}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            See what our satisfied clients are saying about IRIDES.
+          {t('testimonialsDescription')}
           </p>
         </div>
 

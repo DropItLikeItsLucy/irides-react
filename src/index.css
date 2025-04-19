@@ -1,3 +1,23 @@
+/* Example for Regular */
+@font-face {
+    font-family: 'Noto Sans Georgian';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap; /* Use swap for better perceived performance */
+    src: local('Noto Sans Georgian Regular'), local('NotoSansGeorgian-Regular'),
+         url('/fonts/NotoSansGeorgian-Bold.ttf') format('truetype'); /* Adjust filename */
+  }
+  
+  /* Example for Bold */
+  @font-face {
+    font-family: 'Noto Sans Georgian';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Noto Sans Georgian Bold'), local('NotoSansGeorgian-Bold'),
+         url('/fonts/NotoSansGeorgian-Medium.ttf') format('truetype'); /* Adjust filename */
+  }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

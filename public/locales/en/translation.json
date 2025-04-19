@@ -1,0 +1,52 @@
+{
+    "iridesBrand": "IRIDES",
+    "getQuote": "Get a Quote",
+    "browseServices": "Browse Services",
+    "requestQuote": "Request a Custom Quote",
+    "discussProject": "Discuss Your Project",
+    "getFreeQuoteNow": "Get My Free Quote Now",
+  
+    "heroHeadline": "Quality Printing, Fast Turnaround, Great Prices",
+    "heroDescription": "From business cards and leaflets to magazines, books, and custom packaging – IRIDES delivers professional printing solutions tailored for your business.",
+  
+    "uspSpeedTitle": "Lightning-Fast Turnaround",
+    "uspSpeedDesc": "Get your prints delivered quickly without compromising on quality. We meet your deadlines, every time.",
+    "uspQualityTitle": "Premium Print Quality",
+    "uspQualityDesc": "Experience vibrant colors, sharp details, and durable materials that make a professional impression.",
+    "uspPriceTitle": "Competitive Pricing",
+    "uspPriceDesc": "Receive top-tier printing services that fit your budget. Get transparent quotes with no hidden fees.",
+  
+    "servicesHeadline": "Our Wide Range of Printing Services",
+    "servicesDescription": "We handle projects big and small, ensuring consistent quality across all your printed materials.",
+    "serviceBusinessCards": "Business Cards",
+    "serviceLeaflets": "Leaflets & Flyers",
+    "serviceBooks": "Books & Booklets",
+    "serviceMagazines": "Magazines",
+    "servicePosters": "Posters",
+    "serviceBrochures": "Brochures",
+    "servicePackaging": "Custom Packaging",
+    "serviceMore": "And Much More...",
+  
+    "howitworksHeadline": "Simple Steps to Perfect Prints",
+    "howitworksDescription": "Getting your professional printing done is easy with IRIDES.",
+    "step1Title": "Submit Your Request",
+    "step1Desc": "Contact us with your project specs for a custom quote, or easily configure options for standard items like business cards.",
+    "step2Title": "Upload & Approve",
+    "step2Desc": "Use our simple upload tool for your design files. We’ll provide a digital proof for your review and approval before printing.",
+    "step3Title": "Fast Production & Delivery",
+    "step3Desc": "Once approved, your order moves swiftly through production. We print, finish, and ship your high-quality materials right to your door.",
+  
+    "testimonialsHeadline": "Trusted by Businesses Like Yours",
+    "testimonialsDescription": "See what our satisfied clients are saying about IRIDES.",
+    "testimonial1Quote": "IRIDES delivered our marketing materials ahead of schedule and the quality was outstanding for our recent trade show. Their pricing is very competitive too!",
+    "testimonial1Name": "Jane D.",
+    "testimonial1Title": "Marketing Manager, Tech Startup",
+    "testimonial2Quote": "We needed complex book printing with specific binding for a corporate event. IRIDES handled everything professionally and the final product exceeded our expectations. Highly recommended.",
+    "testimonial2Name": "John S.",
+    "testimonial2Title": "Events Coordinator, Finance Group",
+  
+    "ctaHeadline": "Ready to Start Your Next Printing Project?",
+    "ctaDescription": "Let IRIDES bring your vision to life with exceptional quality, speed, and value. Our team is ready to help – contact us today for a personalized quote!",
+  
+    "footerCopyright": "IRIDES Printing House. All rights reserved."
+  }

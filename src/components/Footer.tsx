@@ -1,7 +1,9 @@
 // src/components/Footer.tsx
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -10,7 +12,7 @@ const Footer: React.FC = () => {
         <div className="text-center text-gray-600">
           {/* Copyright */}
           <p className="text-sm mb-2">
-            © {currentYear} IRIDES Printing House. All rights reserved.
+            © {currentYear} {t('footerCopyright')}
           </p>
 
           {/* Optional Links (Add actual links later) */}
