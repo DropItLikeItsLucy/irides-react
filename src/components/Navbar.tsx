@@ -24,6 +24,15 @@ const Navbar: React.FC = () => {
             {/* Optional: Add links here later if needed e.g., to #services */}
             {/* <a href="#services" className="text-gray-600 hover:text-gray-900">Services</a> */}
             {/* <a href="#contact" className="text-gray-600 hover:text-gray-900">Contact</a> */}
+            {/* Phone Number */}
+            <a
+              href={`tel:${t('phoneNumber').replace(/\s|\(|\)/g, '')}`} // Create tel: link, remove spaces/parentheses
+              className="text-sm font-medium text-gray-600 hover:text-irides-700 transition duration-150 ease-in-out whitespace-nowrap flex items-center group" // Added flex, group
+            >
+                {/* Optional Phone Icon */}
+                
+                <span>{t('phoneNumber')}</span>
+            </a>
             <LanguageSwitcher /> 
             <a // Changed button to link for quote page/modal later
               href="#quote-form" // Placeholder link, update later

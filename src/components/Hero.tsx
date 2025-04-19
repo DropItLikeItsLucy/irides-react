@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 const Hero: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <section className="bg-gradient-to-r from-green-50 via-white to-green-50 py-20 md:py-32 text-center">
+    <section className=" from-green-50 via-white to-green-50 py-20 md:py-32 text-center">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight drop-shadow-sm">
         {t('heroHeadline')}

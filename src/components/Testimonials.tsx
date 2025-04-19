@@ -43,7 +43,7 @@ const testimonials: TestimonialData[] = [
           {t('testimonialsHeadline')}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          {t('testimonialsDescription')}
+          {/* {t('testimonialsDescription')} */}
           </p>
         </div>
 
