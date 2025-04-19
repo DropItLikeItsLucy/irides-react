@@ -32,7 +32,7 @@ const ServiceCard: React.FC<ServiceItemData> = ({ title, imageUrl, altText, icon
             // Use placeholder if actual image isn't ready
             src={imageUrl || `https://via.placeholder.com/80x80.png?text=${encodeURIComponent(title)}`}
             alt={altText}
-            className="w-80 h-80 mb-4 object-contain" // Use object-contain
+            className="w-60 h-60 mb-4 object-contain" // Use object-contain
             loading="lazy" // Lazy load images below the fold
          />
       ) : icon ? (
@@ -80,7 +80,7 @@ const Services: React.FC = () => {
         <div className="text-center mt-12 lg:mt-16">
           <a
             href="#quote-form" // Link to quote form section
-            className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded text-lg transition duration-150 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="inline-block bg-irides-green hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded text-lg transition duration-150 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-irides-green"
           >
             Discuss Your Project
           </a>

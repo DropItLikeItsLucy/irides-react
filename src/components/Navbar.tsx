@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="text-2xl font-bold text-blue-700 hover:text-blue-800 transition duration-150 ease-in-out">
+            <a href="/" className="text-2xl font-bold text-irides-700 hover:text-irides-950 transition duration-150 ease-in-out">
               IRIDES
             </a>
           </div>
@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
             {/* <a href="#contact" className="text-gray-600 hover:text-gray-900">Contact</a> */}
             <a // Changed button to link for quote page/modal later
               href="#quote-form" // Placeholder link, update later
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded transition duration-150 ease-in-out shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="bg-irides-green hover:bg-opacity-80 text-white font-bold py-2 px-5 rounded transition duration-150 ease-in-out shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-irides-green"
             >
               Get a Quote
             </a>

@@ -3,7 +3,7 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="bg-gradient-to-r from-blue-50 via-white to-blue-50 py-20 md:py-32 text-center">
+    <section className="bg-gradient-to-r from-green-50 via-white to-green-50 py-20 md:py-32 text-center">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight drop-shadow-sm">
           Quality Printing, Fast Turnaround, Great Prices
@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <a
             href="#quote-form" // Placeholder link
-            className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded text-lg transition duration-150 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="inline-block bg-irides-700 hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded text-lg transition duration-150 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-irides-500 active:bg-irides-800"
           >
             Request a Custom Quote
           </a>
