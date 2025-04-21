@@ -1,5 +1,5 @@
 // src/pages/QuotePage.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -22,19 +22,56 @@ type QuoteFormInputs = z.infer<typeof quoteSchema>;
 
 const QuotePage: React.FC = () => {
     const { t } = useTranslation();
-    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<QuoteFormInputs>({
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+    const [submitMessage, setSubmitMessage] = useState('');
+    const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<QuoteFormInputs>({ // <-- Add reset here
         resolver: zodResolver(quoteSchema),
     });
 
     // 3. Define the submission handler
     // TODO: Replace console.log with actual submission logic (e.g., API call, Formspree)
     const onSubmit: SubmitHandler<QuoteFormInputs> = async (data) => {
-        // Simulate network request
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        console.log('Form Data:', data);
-        // Handle file uploads separately if included
-        // Show success message / redirect
-        alert(t('quoteFormSuccess')); // Simple alert for now
+        setSubmitStatus('loading');
+        setSubmitMessage(''); // Clear previous messages
+
+        // !! Handle File Upload Separately (See Below) !!
+        // For now, let's submit without the file first
+        const formData = new FormData();
+        Object.entries(data).forEach(([key, value]) => {
+            // Don't append file input data directly yet
+            if (key !== 'fileUpload' && value !== undefined && value !== null) {
+                 formData.append(key, value instanceof Blob ? value : String(value));
+            }
+        });
+
+        // Add file if needed (see file upload section)
+
+        try {
+            const response = await fetch('https://formspree.io/f/movdalrq', { // <-- REPLACE WITH YOUR ENDPOINT
+                method: 'POST',
+                body: formData, // Send as FormData for potential file uploads later
+                headers: {
+                    'Accept': 'application/json' // Important for Formspree AJAX
+                }
+            });
+
+            if (response.ok) {
+                setSubmitStatus('success');
+                setSubmitMessage(t('quoteFormSuccess', 'Thank you! Your quote request has been sent.'));
+                reset(); // Reset the form fields
+            } else {
+                // Attempt to parse error from Formspree response
+                const responseData = await response.json();
+                const errorMessage = responseData?.errors?.map((err: any) => err.message).join(', ') || t('quoteFormError', 'Oops! There was a problem submitting your form. Please try again.');
+                setSubmitStatus('error');
+                setSubmitMessage(errorMessage);
+                console.error("Formspree error:", responseData);
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+            setSubmitStatus('error');
+            setSubmitMessage(t('quoteFormErrorNetwork', 'A network error occurred. Please check your connection and try again.'));
+        }
     };
 
     // Basic CSS classes for form elements (customize further)
@@ -128,22 +165,35 @@ const QuotePage: React.FC = () => {
                     </div>
 
                     {/* File Upload (Basic - More complex handling needed for actual upload) */}
-                    {/* <div>
-                        <label htmlFor="fileUpload" className={labelClass}>{t('formLabelFile', 'Upload Design File')} <span className="text-xs text-gray-500">({t('formLabelOptional', 'Optional')})</span></label>
-                        <input
-                            type="file"
-                            id="fileUpload"
-                            {...register('fileUpload')}
-                            className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-irides-100 file:text-irides-700 hover:file:bg-irides-200"
+                    <div>
+                         <label htmlFor="fileUpload" className={labelClass}>{t('formLabelFile', 'Upload Design File')} <span className="text-xs text-gray-500">({t('formLabelOptional', 'Optional')})</span></label>
+                         <input
+                             type="file"
+                             id="fileUpload"
+                             {...register('fileUpload')} // Register the file input
+                             className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-irides-100 file:text-irides-700 hover:file:bg-irides-200 cursor-pointer"
                          />
-                         {errors.fileUpload && <p className={errorClass}>{t(errors.fileUpload.message || 'formErrorFile')}</p>}
-                    </div> */}
+                         {/* Basic file validation example (add to zod schema if needed) */}
+                         {/* {errors.fileUpload && <p className={errorClass}>{t(errors.fileUpload.message || 'formErrorFile')}</p>} */}
+                     </div>
+
+                     {/* --- Submission Status --- */}
+                     {submitStatus !== 'idle' && (
+                         <div className={`p-3 rounded-md text-sm ${
+                             submitStatus === 'success' ? 'bg-green-100 text-green-800' :
+                             submitStatus === 'error' ? 'bg-red-100 text-red-800' :
+                             'bg-blue-100 text-blue-800' // Loading state
+                         }`}>
+                             {submitStatus === 'loading' ? t('formSubmitting', 'Submitting...') : submitMessage}
+                         </div>
+                     )}
+
 
                     {/* Submit Button */}
                     <div>
                         <button
                             type="submit"
-                            disabled={isSubmitting}
+                            disabled={submitStatus === 'loading'}
                             className={`
                                 w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm
                                 text-lg font-medium text-white bg-irides-700 hover:bg-irides-600
@@ -151,7 +201,7 @@ const QuotePage: React.FC = () => {
                                 disabled:opacity-50 disabled:cursor-not-allowed
                             `}
                         >
-                            {isSubmitting ? t('formSubmitting', 'Submitting...') : t('formSubmitButton', 'Submit Quote Request')}
+                            {submitStatus === 'loading' ? t('formSubmitting', 'Submitting...') : t('formSubmitButton', 'Submit Quote Request')}
                         </button>
                     </div>
                 </form>
