@@ -45,9 +45,18 @@ const Navbar: React.FC = () => {
 
           {/* Mobile Menu Button (Placeholder functionality) */}
           <div className="md:hidden flex items-center">
+          <a
+              href={`tel:${t('phoneNumber').replace(/\s|\(|\)/g, '')}`} // Create tel: link, remove spaces/parentheses
+              className="mr-5 text-sm font-medium text-gray-600 hover:text-irides-700 transition duration-150 ease-in-out whitespace-nowrap flex items-center group" // Added flex, group
+            >
+                {/* Optional Phone Icon */}
+                
+                <span>{t('phoneNumber')}</span>
+            </a>
+          <LanguageSwitcher />
              <Link // Changed button to link for quote page/modal later
               to="/quote" // Placeholder link, update later
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm transition duration-150 ease-in-out shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="ml-5 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm transition duration-150 ease-in-out shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               {t('getQuote')} 
             </Link>
