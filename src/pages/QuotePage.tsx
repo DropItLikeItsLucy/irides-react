@@ -14,7 +14,7 @@ const quoteSchema = z.object({
     serviceType: z.string().min(1, { message: 'Please select a service type' }), // Ensure a selection is made
     quantity: z.number({ invalid_type_error: 'Quantity must be a number' }).positive({ message: 'Quantity must be positive' }).optional(),
     details: z.string().min(10, { message: 'Please provide at least 10 characters of detail' }),
-    // fileUpload: z.instanceof(FileList).optional(), // File uploads need special handling - optional for now
+    fileUpload: z.instanceof(FileList).optional(), // File uploads need special handling - optional for now
 });
 
 // Infer the TypeScript type from the schema
@@ -37,12 +37,13 @@ const QuotePage: React.FC = () => {
         // !! Handle File Upload Separately (See Below) !!
         // For now, let's submit without the file first
         const formData = new FormData();
-        Object.entries(data).forEach(([key, value]) => {
-            // Don't append file input data directly yet
-            if (key !== 'fileUpload' && value !== undefined && value !== null) {
-                 formData.append(key, value instanceof Blob ? value : String(value));
-            }
-        });
+Object.entries(data).forEach(([key, value]) => {
+    // Skip file field here (handled later) and skip undefined/null
+    if (key !== 'fileUpload' && value !== undefined && value !== null) {
+         // Convert boolean/number/string to string for FormData
+         formData.append(key, String(value));
+    }
+});
 
         // Add file if needed (see file upload section)
 
@@ -193,7 +194,7 @@ const QuotePage: React.FC = () => {
                     <div>
                         <button
                             type="submit"
-                            disabled={submitStatus === 'loading'}
+                            disabled={isSubmitting}
                             className={`
                                 w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm
                                 text-lg font-medium text-white bg-irides-700 hover:bg-irides-600

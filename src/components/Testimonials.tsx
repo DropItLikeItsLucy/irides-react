@@ -7,7 +7,7 @@ interface TestimonialData {
   quote: string;
   name: string;
   title: string; // e.g., "CEO, ExampleCorp" or "Small Business Owner"
-  // imageUrl?: string; // Optional: Add image URL for avatar later
+  imageUrl?: string; // Optional: Add image URL for avatar later
 }
 const Testimonials: React.FC = () => {
   const { t } = useTranslation();
