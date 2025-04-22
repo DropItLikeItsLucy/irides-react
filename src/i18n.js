@@ -18,7 +18,7 @@ i18n
   // For all options read: https://www.i18next.com/overview/configuration-options
   .init({
     debug: import.meta.env.DEV, // Enable debug output in development
-    fallbackLng: 'en', // Use 'en' if detected language is not available
+    fallbackLng: 'ka', // Use 'en' if detected language is not available
     interpolation: {
       escapeValue: false, // Not needed for react as it escapes by default
     },
